@@ -14,7 +14,7 @@ from parse_aml import aml_to_dict, aml_dict_to_data_dict
 @click.argument('val_dir')
 @click.argument('txt_dir')
 @click.argument('test_fraction', type=float)
-def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float, detections=True):
+def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float, detections=False):
 
     if not os.path.exists(txt_dir):
         os.makedirs(txt_dir)
@@ -42,12 +42,12 @@ def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float, detectio
             top = obj_dict['bndbox']['ymin']
             bottom = obj_dict['bndbox']['ymax']
             if not detections:
-                obj_descr.append(f"{label} {left} {top} {right} {bottom} \n")
+                obj_descr.append(f"{label} {left} {top} {right} {bottom}")
             else:
-                obj_descr.append(f"{label} 1.0 {left} {top} {right} {bottom} \n")
+                obj_descr.append(f"{label} 1.0 {left} {top} {right} {bottom}")
 
         with open(txt_path, 'w') as f:
-            f.writelines(obj_descr)
+            f.write('\n'.join(obj_descr))
 
 
 if __name__ == '__main__':
