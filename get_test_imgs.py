@@ -14,7 +14,7 @@ from parse_aml import aml_to_dict, aml_dict_to_data_dict
 @click.argument('val_dir')
 @click.argument('txt_dir')
 @click.argument('test_fraction', type=float)
-def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float, detections=False):
+def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float, detections=True):
 
     if not os.path.exists(txt_dir):
         os.makedirs(txt_dir)
