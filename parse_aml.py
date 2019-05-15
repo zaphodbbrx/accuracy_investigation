@@ -17,9 +17,11 @@ def aml_to_dict(aml_path):
     Returns:
         The contents of the .aml file as a dictionary (OrderedDict)
     """
-    with tf.gfile.GFile(aml_path, 'r') as f:
+    #with tf.gfile.GFile(aml_path, 'r') as f:
+    #    markup = f.read()
+    with open(aml_path, 'r') as f:
         markup = f.read()
-
+    
     di = xmltodict.parse(markup)
     # print(di)
     # b = xmltodict.unparse(di, pretty=True, indent='  ')
