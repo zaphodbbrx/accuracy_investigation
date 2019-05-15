@@ -21,12 +21,12 @@ def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float, detectio
 
     test_imgs_paths, test_amls_paths = [], []
 
-    for val_source in ['ive', 'iv_cloud_20181210', 'mscoco', 'voc']:
+    for val_source in ['ive', 'mscoco', 'voc']:
         all_files = os.listdir(os.path.join(val_dir, val_source, 'imgs'))
         imgs = list(filter(lambda x: '.aml' not in x, all_files))
         amls = list(filter(lambda x: '.aml' in x, all_files))
 
-        test_ix = random.sample(list(range(len(imgs))), int(test_fraction*len(imgs)))
+        test_ix = list(range(42))#random.sample(list(range(len(imgs))), int(test_fraction*len(imgs)))
         test_imgs_paths += [os.path.join(val_dir, val_source, 'imgs', imgs[i]) for i in test_ix]
         test_amls_paths += [os.path.join(val_dir, val_source, 'imgs', amls[i]) for i in test_ix]
 
@@ -41,6 +41,7 @@ def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float, detectio
             right = obj_dict['bndbox']['xmax']
             top = obj_dict['bndbox']['ymin']
             bottom = obj_dict['bndbox']['ymax']
+
             if not detections:
                 obj_descr.append(f"{label} {left} {top} {right} {bottom}")
             else:
