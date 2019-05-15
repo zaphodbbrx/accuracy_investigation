@@ -3,7 +3,7 @@ from collections import OrderedDict
 
 import xmltodict
 
-import tensorflow as tf
+#import tensorflow as tf
 
 
 def aml_to_dict(aml_path):
@@ -21,7 +21,7 @@ def aml_to_dict(aml_path):
     #    markup = f.read()
     with open(aml_path, 'r') as f:
         markup = f.read()
-    
+
     di = xmltodict.parse(markup)
     # print(di)
     # b = xmltodict.unparse(di, pretty=True, indent='  ')
