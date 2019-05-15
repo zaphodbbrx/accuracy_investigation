@@ -21,7 +21,7 @@ def prepare_test_imgs(val_dir: str, txt_dir: str, test_fraction: float):
 
     test_imgs_paths, test_amls_paths = [], []
 
-    for val_source in ['ive', 'iv_cloud', 'mscoco', 'voc']:
+    for val_source in ['ive', 'iv_cloud_20181210', 'mscoco', 'voc']:
         all_files = os.listdir(os.path.join(val_dir, val_source, 'imgs'))
         imgs = list(filter(lambda x: '.aml' not in x, all_files))
         amls = list(filter(lambda x: '.aml' in x, all_files))
